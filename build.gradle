@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'fr.lukam'
+version '0.0.1'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    implementation 'com.github.LukaMrt:Bot-API:V0.6.1'
+}
