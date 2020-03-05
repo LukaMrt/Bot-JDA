@@ -1,14 +1,13 @@
 package fr.lukam.bot.jda.main.configuration;
 
-import java.util.List;
-
 public class Configuration {
 
-    public String token;
+    public final String token;
     public final char prefix;
 
-    public final long ownerId;
-    public final List<Long> coOwnerIds;
+    public final String ownerId;
+    public final String[] coOwnerIds;
+    public final String mainServerId;
 
     public Configuration(ConfigurationBuilder configurationBuilder) {
         this.token = configurationBuilder.token;
@@ -16,6 +15,7 @@ public class Configuration {
 
         this.ownerId = configurationBuilder.ownerId;
         this.coOwnerIds = configurationBuilder.coOwnerIds;
+        this.mainServerId = configurationBuilder.mainServerId;
     }
 
 }

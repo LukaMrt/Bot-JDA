@@ -3,8 +3,6 @@ package fr.lukam.bot.jda.main.configuration;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.file.FileConfig;
 
-import java.util.ArrayList;
-
 public class ConfigurationLoaderUtils {
 
     public static Configuration loadFrom(String filePath) {
@@ -19,8 +17,9 @@ public class ConfigurationLoaderUtils {
         Configuration configuration = ConfigurationBuilder.aConfiguration()
                 .withToken(fileConfig.getOrElse("bot.token", ""))
                 .withPrefix(fileConfig.getCharOrElse("bot.prefix", ' '))
-                .withOwnerId(fileConfig.getLongOrElse("ids.owner", 0))
-                .withCoOwnerIds(fileConfig.getOrElse("ids.coOwners", new ArrayList<>()))
+                .withOwnerId(fileConfig.getOrElse("ids.owner_id", ""))
+                .withCoOwnerIds(fileConfig.getOrElse("ids.co_owners_ids", new String[]{}))
+                .withMainServerId(fileConfig.getOrElse("ids.main_server_id", ""))
                 .build();
 
         fileConfig.close();
