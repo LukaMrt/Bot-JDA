@@ -2,7 +2,7 @@ package fr.lukam.bot.jda.fake;
 
 import fr.lukam.deltibot.core.domain.infos.InfosRepository;
 
-public class FakeInfosRepository implements InfosRepository {
+public class FakeInfosRepository implements InfosRepository, fr.lukam.bot.api.repositories.InfosRepository {
 
     @Override
     public void set(String key, String value) {

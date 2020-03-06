@@ -5,7 +5,7 @@ import fr.lukam.bot.jda.model.entities.server.permissions.manage.*;
 import fr.lukam.bot.jda.model.entities.server.permissions.members.*;
 import fr.lukam.bot.jda.model.entities.server.permissions.text.*;
 import fr.lukam.bot.jda.model.entities.server.permissions.voice.*;
-import fr.lukam.bot_api.entities.interfaces.server.Permission;
+import fr.lukam.bot.api.entities.interfaces.server.Permission;
 
 public class PermissionsAdapter {
 

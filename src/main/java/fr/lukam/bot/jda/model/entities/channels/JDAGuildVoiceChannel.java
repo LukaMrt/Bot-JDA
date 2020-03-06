@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.model.entities.channels;
 
 import fr.lukam.bot.jda.model.entities.server.JDAServerMember;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerVoiceChannel;
-import fr.lukam.bot_api.entities.interfaces.server.ServerMember;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerVoiceChannel;
+import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.VoiceChannel;

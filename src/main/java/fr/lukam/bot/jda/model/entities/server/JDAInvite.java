@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.model.entities.server;
 
-import fr.lukam.bot_api.entities.fakes.server.FakeServerMember;
-import fr.lukam.bot_api.entities.interfaces.server.Invite;
-import fr.lukam.bot_api.entities.interfaces.server.ServerMember;
+import fr.lukam.bot.api.entities.fakes.server.FakeServerMember;
+import fr.lukam.bot.api.entities.interfaces.server.Invite;
+import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 

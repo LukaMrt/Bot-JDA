@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.channels.types;
 
-import fr.lukam.bot_api.entities.interfaces.channels.ChannelType;
+import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
 
 public class Category implements ChannelType {
 

@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.reaction;
 
-import fr.lukam.bot_api.entities.interfaces.reaction.Emote;
+import fr.lukam.bot.api.entities.interfaces.reaction.Emote;
 
 public class JDAEmote implements Emote {
 

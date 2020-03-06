@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.model.entities.server;
 
 import fr.lukam.bot.jda.adapters.PermissionsAdapter;
-import fr.lukam.bot_api.entities.interfaces.server.Permission;
-import fr.lukam.bot_api.entities.interfaces.server.Role;
+import fr.lukam.bot.api.entities.interfaces.server.Permission;
+import fr.lukam.bot.api.entities.interfaces.server.Role;
 
 import java.awt.*;
 import java.util.Arrays;

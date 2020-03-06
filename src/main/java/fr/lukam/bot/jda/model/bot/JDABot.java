@@ -2,10 +2,10 @@ package fr.lukam.bot.jda.model.bot;
 
 import fr.lukam.bot.jda.model.entities.server.JDAServer;
 import fr.lukam.bot.jda.model.entities.user.JDAUser;
-import fr.lukam.bot_api.bot.Bot;
-import fr.lukam.bot_api.entities.fakes.server.FakeServer;
-import fr.lukam.bot_api.entities.interfaces.server.Server;
-import fr.lukam.bot_api.entities.interfaces.user.User;
+import fr.lukam.bot.api.bot.Bot;
+import fr.lukam.bot.api.entities.fakes.server.FakeServer;
+import fr.lukam.bot.api.entities.interfaces.server.Server;
+import fr.lukam.bot.api.entities.interfaces.user.User;
 import net.dv8tion.jda.api.JDA;
 
 import java.util.Optional;

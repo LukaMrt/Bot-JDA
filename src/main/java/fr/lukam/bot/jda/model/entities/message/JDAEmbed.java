@@ -1,7 +1,7 @@
 package fr.lukam.bot.jda.model.entities.message;
 
-import fr.lukam.bot_api.entities.interfaces.message.Embed;
-import fr.lukam.bot_api.entities.interfaces.message.Field;
+import fr.lukam.bot.api.entities.interfaces.message.Embed;
+import fr.lukam.bot.api.entities.interfaces.message.Field;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.awt.*;

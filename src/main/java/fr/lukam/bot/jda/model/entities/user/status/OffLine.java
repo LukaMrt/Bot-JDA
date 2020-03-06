@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.user.status;
 
-import fr.lukam.bot_api.entities.interfaces.user.Status;
+import fr.lukam.bot.api.entities.interfaces.user.Status;
 
 import java.awt.*;
 

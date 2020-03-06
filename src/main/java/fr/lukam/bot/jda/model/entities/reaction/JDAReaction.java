@@ -1,9 +1,9 @@
 package fr.lukam.bot.jda.model.entities.reaction;
 
 import fr.lukam.bot.jda.model.entities.user.JDAUser;
-import fr.lukam.bot_api.entities.interfaces.reaction.Emote;
-import fr.lukam.bot_api.entities.interfaces.reaction.Reaction;
-import fr.lukam.bot_api.entities.interfaces.user.User;
+import fr.lukam.bot.api.entities.interfaces.reaction.Emote;
+import fr.lukam.bot.api.entities.interfaces.reaction.Reaction;
+import fr.lukam.bot.api.entities.interfaces.user.User;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageReaction;
 

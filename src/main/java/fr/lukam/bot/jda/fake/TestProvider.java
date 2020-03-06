@@ -20,7 +20,7 @@ public class TestProvider implements ObjectsProvider {
     public static final ManagePlugins PLUGINS_ACTIONS = new PluginsActions(PLUGINS_REPOSITORY);
     public static final InfosRepository INFOS_REPOSITORY = new FakeInfosRepository();
     public static final SaveInfos INFOS_SAVER = new InfosSaver(INFOS_REPOSITORY);
-    public static final fr.lukam.bot_api.entities.interfaces.events.Listener LISTENER = new CommandListener();
+    public static final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener();
     public static final Listener LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
 
     @Override

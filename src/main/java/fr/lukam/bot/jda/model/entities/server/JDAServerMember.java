@@ -4,13 +4,13 @@ import fr.lukam.bot.jda.adapters.EmbedAdapter;
 import fr.lukam.bot.jda.adapters.PermissionsAdapter;
 import fr.lukam.bot.jda.adapters.StatusAdapter;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerVoiceChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.TextChannel;
-import fr.lukam.bot_api.entities.interfaces.message.Message;
-import fr.lukam.bot_api.entities.interfaces.server.Permission;
-import fr.lukam.bot_api.entities.interfaces.server.Role;
-import fr.lukam.bot_api.entities.interfaces.server.ServerMember;
-import fr.lukam.bot_api.entities.interfaces.user.Status;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerVoiceChannel;
+import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
+import fr.lukam.bot.api.entities.interfaces.message.Message;
+import fr.lukam.bot.api.entities.interfaces.server.Permission;
+import fr.lukam.bot.api.entities.interfaces.server.Role;
+import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
+import fr.lukam.bot.api.entities.interfaces.user.Status;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -56,7 +56,7 @@ public class JDAServerMember implements ServerMember {
     }
 
     @Override
-    public boolean hashPermissions(Permission... permissions) {
+    public boolean hasPermissions(Permission... permissions) {
         return this.member.hasPermission(Arrays.stream(permissions)
                 .map(Permission::getName)
                 .map(PermissionsAdapter::fromAPIPermission)

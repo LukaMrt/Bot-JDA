@@ -1,13 +1,13 @@
 package fr.lukam.bot.jda.model.entities.server;
 
 import fr.lukam.bot.jda.model.entities.channels.JDAGuildChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerTextChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerVoiceChannel;
-import fr.lukam.bot_api.entities.interfaces.server.Category;
-import fr.lukam.bot_api.entities.interfaces.server.Permission;
-import fr.lukam.bot_api.entities.interfaces.server.Role;
-import fr.lukam.bot_api.entities.interfaces.server.ServerMember;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerChannel;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerTextChannel;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerVoiceChannel;
+import fr.lukam.bot.api.entities.interfaces.server.Category;
+import fr.lukam.bot.api.entities.interfaces.server.Permission;
+import fr.lukam.bot.api.entities.interfaces.server.Role;
+import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
 import net.dv8tion.jda.api.entities.GuildChannel;
 
 import java.util.List;

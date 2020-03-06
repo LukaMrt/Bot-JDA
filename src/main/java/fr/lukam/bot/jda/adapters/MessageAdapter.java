@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.adapters;
 
-import fr.lukam.bot_api.bot.API;
-import fr.lukam.bot_api.entities.interfaces.message.Message;
-import fr.lukam.bot_api.entities.interfaces.message.MessageBuilder;
+import fr.lukam.bot.api.bot.API;
+import fr.lukam.bot.api.entities.interfaces.message.Message;
+import fr.lukam.bot.api.entities.interfaces.message.MessageBuilder;
 
 public class MessageAdapter {
 

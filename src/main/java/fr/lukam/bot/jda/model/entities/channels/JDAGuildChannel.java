@@ -2,9 +2,9 @@ package fr.lukam.bot.jda.model.entities.channels;
 
 import fr.lukam.bot.jda.adapters.ChannelTypeAdapter;
 import fr.lukam.bot.jda.model.entities.server.JDAInvite;
-import fr.lukam.bot_api.entities.interfaces.channels.ChannelType;
-import fr.lukam.bot_api.entities.interfaces.channels.ServerChannel;
-import fr.lukam.bot_api.entities.interfaces.server.Invite;
+import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
+import fr.lukam.bot.api.entities.interfaces.channels.ServerChannel;
+import fr.lukam.bot.api.entities.interfaces.server.Invite;
 import net.dv8tion.jda.api.entities.GuildChannel;
 
 public class JDAGuildChannel implements ServerChannel {

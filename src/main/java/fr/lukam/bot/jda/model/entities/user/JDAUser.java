@@ -2,9 +2,9 @@ package fr.lukam.bot.jda.model.entities.user;
 
 import fr.lukam.bot.jda.adapters.EmbedAdapter;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
-import fr.lukam.bot_api.entities.interfaces.channels.TextChannel;
-import fr.lukam.bot_api.entities.interfaces.message.Message;
-import fr.lukam.bot_api.entities.interfaces.user.User;
+import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
+import fr.lukam.bot.api.entities.interfaces.message.Message;
+import fr.lukam.bot.api.entities.interfaces.user.User;
 import net.dv8tion.jda.api.MessageBuilder;
 
 import java.time.LocalDateTime;

@@ -3,9 +3,9 @@ package fr.lukam.bot.jda.model.entities.channels;
 import fr.lukam.bot.jda.adapters.ChannelTypeAdapter;
 import fr.lukam.bot.jda.adapters.EmbedAdapter;
 import fr.lukam.bot.jda.adapters.MessageAdapter;
-import fr.lukam.bot_api.entities.interfaces.channels.ChannelType;
-import fr.lukam.bot_api.entities.interfaces.channels.TextChannel;
-import fr.lukam.bot_api.entities.interfaces.message.Message;
+import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
+import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
+import fr.lukam.bot.api.entities.interfaces.message.Message;
 import net.dv8tion.jda.api.MessageBuilder;
 
 import java.util.List;

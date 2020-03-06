@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.main;
 
-import fr.lukam.bot_api.entities.interfaces.events.Listener;
+import fr.lukam.bot.api.entities.interfaces.events.Listener;
 
 public class CommandListener implements Listener {
 
