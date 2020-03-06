@@ -24,6 +24,11 @@ public class TestProvider implements ObjectsProvider {
     public static final Listener LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
 
     @Override
+    public InfosRepository getInfosRepository() {
+        return INFOS_REPOSITORY;
+    }
+
+    @Override
     public CommandsRepository getCommandsRepository() {
         return SIMPLE_COMMANDS_REPOSITORY;
     }

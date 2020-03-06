@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.main;
 
 import fr.lukam.bot.api.repositories.CommandsRepository;
+import fr.lukam.bot.api.repositories.InfosRepository;
 import fr.lukam.bot.api.repositories.ListenersRepository;
-import fr.lukam.bot.jda.fake.TestProvider;
 import fr.lukam.bot.jda.main.configuration.Configuration;
 import fr.lukam.bot.jda.main.configuration.ConfigurationLoaderUtils;
 import fr.lukam.bot.jda.model.bot.JDABot;
@@ -67,7 +67,7 @@ public class JDAMain {
         API.setFieldBuilder(new JDAFieldBuilder());
         API.setCommandsRepository((CommandsRepository) PROVIDER.getCommandsRepository());
         API.setListenersRepository((ListenersRepository) PROVIDER.getListenersRepository());
-        API.setInfosRepository((CommandsRepository) PROVIDER.getInfosSaver());
+        API.setInfosRepository((InfosRepository) PROVIDER.getInfosRepository());
     }
 
     private static void startBotLoop() {

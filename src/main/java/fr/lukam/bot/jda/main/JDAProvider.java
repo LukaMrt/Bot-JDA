@@ -1,5 +1,6 @@
 package fr.lukam.bot.jda.main;
 
+import fr.lukam.deltibot.core.domain.infos.InfosRepository;
 import fr.lukam.deltibot.core.domain.infos.InfosSaver;
 import fr.lukam.deltibot.core.domain.infos.SaveInfos;
 import fr.lukam.deltibot.core.domain.plugins.CommandsRepository;
@@ -24,6 +25,11 @@ public class JDAProvider implements ObjectsProvider {
     public static final InfosSaver INFOS_SAVER = new InfosSaver(INFOS_REPOSITORY);
     public static final CommandListener LISTENER = new CommandListener();
     public static final ListenerAdapter LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
+
+    @Override
+    public InfosRepository getInfosRepository() {
+        return INFOS_REPOSITORY;
+    }
 
     @Override
     public CommandsRepository getCommandsRepository() {
