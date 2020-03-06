@@ -1,5 +1,6 @@
 package fr.lukam.bot.jda.main;
 
+import fr.lukam.bot.jda.fake.TestProvider;
 import fr.lukam.bot.jda.main.configuration.Configuration;
 import fr.lukam.bot.jda.main.configuration.ConfigurationLoaderUtils;
 import fr.lukam.bot.jda.model.bot.JDABot;
@@ -7,20 +8,23 @@ import fr.lukam.bot.jda.model.entities.message.JDAEmbedBuilder;
 import fr.lukam.bot.jda.model.entities.message.JDAFieldBuilder;
 import fr.lukam.bot.jda.model.entities.message.JDAMessageBuilder;
 import fr.lukam.bot_api.bot.API;
+import fr.lukam.deltibot.core.domain.bot.BotInfos;
+import fr.lukam.deltibot.core.main.Main;
 import net.dv8tion.jda.api.JDA;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
-public class Main {
+public class JDAMain {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JDAMain.class);
     private static final Scanner SCANNER = new Scanner(System.in);
 
     private static final Configuration CONFIGURATION = ConfigurationLoaderUtils.loadFrom("configuration.toml");
 
     private static JDA jda;
+    private static Main main = new Main(new JDAProvider());
 
     public static void main(String[] args) {
 
@@ -29,6 +33,11 @@ public class Main {
         }
 
         setUpAPI();
+
+        main.start(new BotInfos(CONFIGURATION.prefix,
+                CONFIGURATION.ownerId,
+                CONFIGURATION.coOwnerIds,
+                CONFIGURATION.mainServerId));
 
         startBotLoop();
     }
@@ -59,6 +68,7 @@ public class Main {
             LOGGER.info("\"stop\" to stop DeltiBot");
         }
 
+        main.stop();
         jda.shutdown();
         System.exit(0);
     }

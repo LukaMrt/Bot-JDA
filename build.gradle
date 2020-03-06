@@ -1,9 +1,27 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 group 'fr.lukam'
 version '0.0.1'
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'fr.lukam.bot.jda.main.JDAMain')
+    }
+}
+
+shadowJar {
+    shadowJar.setArchiveName("DeltiBot-JDA.jar")
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 sourceCompatibility = 1.8
 
@@ -16,8 +34,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.LukaMrt:Bot-API:V0.6.1'
-    implementation 'com.github.LukaMrt:DeltiBot-Core:V0.1.1'
+    implementation 'com.github.LukaMrt:Bot-API:V0.7.1'
+    implementation 'com.github.LukaMrt:DeltiBot-Core:V0.1.4'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'net.dv8tion:JDA:4.1.0_100'
     implementation 'com.electronwill.night-config:toml:3.6.0'
