@@ -43,7 +43,7 @@ public class JDAMain {
                 CONFIGURATION.coOwnerIds,
                 CONFIGURATION.mainServerId));
 
-        startBotLoop();
+        startBotLoop(args);
     }
 
     private static boolean buildJDA() {
@@ -61,7 +61,6 @@ public class JDAMain {
     }
 
     private static void setUpAPI() {
-        System.out.println(PROVIDER.getCommandsRepository());
         API.setBot(new JDABot(jda));
         API.setEmbedBuilder(new JDAEmbedBuilder());
         API.setMessageBuilder(new JDAMessageBuilder());
@@ -71,15 +70,28 @@ public class JDAMain {
         API.setInfosRepository((InfosRepository) PROVIDER.getInfosRepository());
     }
 
-    private static void startBotLoop() {
-        while (!SCANNER.nextLine().equalsIgnoreCase("stop")) {
-            LOGGER.info("Write \"stop\" to stop DeltiBot");
+    private static void startBotLoop(String[] args) {
+
+        String nextLine;
+
+        do {
+            nextLine = SCANNER.nextLine();
+            LOGGER.info("Write \"stop\" to stop DeltiBot or \"reload\" to reload DeltiBot");
+        } while (!isValidEntry(nextLine));
+
+        if (nextLine.equalsIgnoreCase("stop")) {
+            main.stop();
+            jda.shutdown();
+            LOGGER.info("DeltiBot is stopped");
+            System.exit(0);
+            return;
         }
 
-        main.stop();
-        jda.shutdown();
-        LOGGER.info("DeltiBot is stopped");
-        System.exit(0);
+        JDAMain.main(args);
+    }
+
+    private static boolean isValidEntry(String nextLine) {
+        return nextLine.equalsIgnoreCase("stop") || nextLine.equalsIgnoreCase("reload");
     }
 
 }
