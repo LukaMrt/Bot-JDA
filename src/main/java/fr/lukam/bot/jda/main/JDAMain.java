@@ -56,11 +56,12 @@ public class JDAMain {
             return false;
         }
 
-        LOGGER.info("Bot connected");
+        LOGGER.info("DeltiBot started successfully");
         return true;
     }
 
     private static void setUpAPI() {
+        System.out.println(PROVIDER.getCommandsRepository());
         API.setBot(new JDABot(jda));
         API.setEmbedBuilder(new JDAEmbedBuilder());
         API.setMessageBuilder(new JDAMessageBuilder());
@@ -72,11 +73,12 @@ public class JDAMain {
 
     private static void startBotLoop() {
         while (!SCANNER.nextLine().equalsIgnoreCase("stop")) {
-            LOGGER.info("\"stop\" to stop DeltiBot");
+            LOGGER.info("Write \"stop\" to stop DeltiBot");
         }
 
         main.stop();
         jda.shutdown();
+        LOGGER.info("DeltiBot is stopped");
         System.exit(0);
     }
 
