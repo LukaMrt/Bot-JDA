@@ -12,13 +12,21 @@ public class EmbedAdapter {
 
     public static MessageEmbed fromAPIEmbed(Embed embed) {
 
-        net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder()
-                .setAuthor(embed.getAuthorName()/*, embed.getAuthor().getAvatarURL(), embed.getAuthor().getAvatarURL()*/)
+        net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder();
+
+        if (embed.getTitle().isEmpty()) {
+            return null;
+        }
+
+        embedBuilder.setAuthor(embed.getAuthorName()/*, embed.getAuthor().getAvatarURL(), embed.getAuthor().getAvatarURL()*/)
                 .setDescription(embed.getDescription())
                 .setColor(embed.getColor())
-                .setImage(embed.getImageURL())
                 .setTitle(embed.getTitle())
                 .setFooter(embed.getFooter());
+
+        if (embed.getImageURL().isEmpty()) {
+            embedBuilder.setImage(embed.getImageURL());
+        }
 
         embed.getFields().forEach(field -> embedBuilder.addField(field.getTitle(), field.getContent(), false));
 

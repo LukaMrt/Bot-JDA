@@ -1,6 +1,7 @@
 package fr.lukam.bot.jda.model.entities.server;
 
 import fr.lukam.bot.jda.adapters.EmbedAdapter;
+import fr.lukam.bot.jda.adapters.MessageAdapter;
 import fr.lukam.bot.jda.adapters.PermissionsAdapter;
 import fr.lukam.bot.jda.adapters.StatusAdapter;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
@@ -136,12 +137,8 @@ public class JDAServerMember implements ServerMember {
 
     @Override
     public void sendMessage(Message message) {
-        net.dv8tion.jda.api.entities.Message jdaMessage = new MessageBuilder()
-                .setContent(message.getContent())
-                .setEmbed(EmbedAdapter.fromAPIEmbed(message.getEmbed()))
-                .build();
 
-        this.member.getUser().openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(jdaMessage).queue());
+        this.member.getUser().openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue());
     }
 
     @Override

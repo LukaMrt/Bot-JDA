@@ -20,10 +20,19 @@ public class MessageAdapter {
 
     public static net.dv8tion.jda.api.entities.Message fromAPIMessage(Message newMessage) {
 
-        return new net.dv8tion.jda.api.MessageBuilder()
-                .setContent(newMessage.getContent())
-                .setEmbed(EmbedAdapter.fromAPIEmbed(newMessage.getEmbed()))
-                .build();
+        net.dv8tion.jda.api.MessageBuilder messageBuilder = new net.dv8tion.jda.api.MessageBuilder();
+
+        if (!newMessage.getContent().isEmpty()) {
+            messageBuilder.setContent(newMessage.getContent());
+        } else {
+            messageBuilder.setContent("erreur");
+        }
+
+        if (newMessage.getEmbed() != null) {
+            messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(newMessage.getEmbed()));
+        }
+
+        return messageBuilder.build();
     }
 
 }

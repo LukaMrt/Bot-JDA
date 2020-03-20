@@ -24,13 +24,16 @@ public class JDAMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(JDAMain.class);
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static final ObjectsProvider PROVIDER = new JDAProvider();
+    public static ObjectsProvider PROVIDER;
     private static final Configuration CONFIGURATION = ConfigurationLoaderUtils.loadFrom("configuration.toml");
 
     private static JDA jda;
-    private static Main main = new Main(PROVIDER);
+    private static Main main;
 
     public static void main(String[] args) {
+
+        PROVIDER = new JDAProvider();
+        main = new Main(PROVIDER);
 
         if (!buildJDA()) {
             return;
@@ -42,6 +45,8 @@ public class JDAMain {
                 CONFIGURATION.ownerId,
                 CONFIGURATION.coOwnerIds,
                 CONFIGURATION.mainServerId));
+
+        jda.addEventListener(new DeltiBotJDAListener(API.getListenersRepository()));
 
         startBotLoop(args);
     }

@@ -30,10 +30,20 @@ public class JDAMessageBuilder implements MessageBuilder {
 
     @Override
     public Message build() {
-        return new JDAMessage(new net.dv8tion.jda.api.MessageBuilder()
-                .setEmbed(EmbedAdapter.fromAPIEmbed(embed))
-                .setContent(text)
-                .build());
+
+        net.dv8tion.jda.api.MessageBuilder messageBuilder = new net.dv8tion.jda.api.MessageBuilder();
+
+        if (!text.isEmpty()) {
+            messageBuilder.setContent(text);
+        } else {
+            messageBuilder.setContent("erreur");
+        }
+
+        if (embed != null) {
+            messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(embed));
+        }
+
+        return new JDAMessage(messageBuilder.build());
     }
 
     @Override

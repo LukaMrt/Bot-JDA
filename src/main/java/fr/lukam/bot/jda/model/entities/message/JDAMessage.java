@@ -33,7 +33,7 @@ public class JDAMessage implements Message {
 
     @Override
     public String getContent() {
-        return this.message.getContentDisplay();
+        return this.message.getContentRaw();
     }
 
     @Override

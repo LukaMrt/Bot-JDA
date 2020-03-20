@@ -1,6 +1,7 @@
 package fr.lukam.bot.jda.model.entities.user;
 
 import fr.lukam.bot.jda.adapters.EmbedAdapter;
+import fr.lukam.bot.jda.adapters.MessageAdapter;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
@@ -34,12 +35,8 @@ public class JDAUser implements User {
 
     @Override
     public void sendMessage(Message message) {
-        net.dv8tion.jda.api.entities.Message jdaMessage = new MessageBuilder()
-                .setEmbed(EmbedAdapter.fromAPIEmbed(message.getEmbed()))
-                .setContent(message.getContent())
-                .build();
 
-        this.jdaUser.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(jdaMessage).queue());
+        this.jdaUser.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue());
     }
 
     @Override

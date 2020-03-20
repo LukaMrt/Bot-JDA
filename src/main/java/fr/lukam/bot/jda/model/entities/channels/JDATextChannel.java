@@ -21,10 +21,7 @@ public class JDATextChannel implements TextChannel {
 
     @Override
     public void sendMessage(Message message) {
-        this.jdaChannel.sendMessage(new MessageBuilder()
-                .setContent(message.getContent())
-                .setEmbed(EmbedAdapter.fromAPIEmbed(message.getEmbed()))
-                .build()).queue();
+        this.jdaChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue();
     }
 
     @Override

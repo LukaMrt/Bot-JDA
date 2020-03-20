@@ -14,14 +14,14 @@ import fr.lukam.deltibot.core.main.ObjectsProvider;
 
 public class TestProvider implements ObjectsProvider {
 
-    public static final CommandsRepository SIMPLE_COMMANDS_REPOSITORY = new SimpleCommandsRepository();
-    public static final ListenersRepository SIMPLE_LISTENERS_REPOSITORY = new SimpleListenersRepository();
-    public static final PluginsRepository PLUGINS_REPOSITORY = new JarsPluginsRepository();
-    public static final ManagePlugins PLUGINS_ACTIONS = new PluginsActions(PLUGINS_REPOSITORY);
-    public static final InfosRepository INFOS_REPOSITORY = new FakeInfosRepository();
-    public static final SaveInfos INFOS_SAVER = new InfosSaver(INFOS_REPOSITORY);
-    public static final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener();
-    public static final Listener LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
+    public final CommandsRepository SIMPLE_COMMANDS_REPOSITORY = new SimpleCommandsRepository();
+    public final ListenersRepository SIMPLE_LISTENERS_REPOSITORY = new SimpleListenersRepository();
+    public final PluginsRepository PLUGINS_REPOSITORY = new JarsPluginsRepository();
+    public final ManagePlugins PLUGINS_ACTIONS = new PluginsActions(PLUGINS_REPOSITORY);
+    public final InfosRepository INFOS_REPOSITORY = new FakeInfosRepository();
+    public final SaveInfos INFOS_SAVER = new InfosSaver(INFOS_REPOSITORY);
+    public final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener((fr.lukam.bot.api.repositories.CommandsRepository) SIMPLE_COMMANDS_REPOSITORY, (fr.lukam.bot.api.repositories.InfosRepository) INFOS_REPOSITORY);
+    public final Listener LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
 
     @Override
     public InfosRepository getInfosRepository() {

@@ -22,10 +22,7 @@ public class JDAGuildTextChannel extends JDAGuildChannel implements ServerTextCh
 
     @Override
     public void sendMessage(Message message) {
-        this.textChannel.sendMessage(new MessageBuilder()
-                .setContent(message.getContent())
-                .setEmbed(EmbedAdapter.fromAPIEmbed(message.getEmbed()))
-                .build()).queue();
+        this.textChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue();
     }
 
     @Override
