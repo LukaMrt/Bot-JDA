@@ -10,11 +10,11 @@ import net.dv8tion.jda.api.entities.VoiceChannel;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JDAGuildVoiceChannel extends JDAGuildChannel implements ServerVoiceChannel {
+public class JDAServerVoiceChannel extends JDAGuildChannel implements ServerVoiceChannel {
 
     private final VoiceChannel voiceChannel;
 
-    public JDAGuildVoiceChannel(VoiceChannel voiceChannel) {
+    public JDAServerVoiceChannel(VoiceChannel voiceChannel) {
         super(voiceChannel);
         this.voiceChannel = voiceChannel;
     }

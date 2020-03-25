@@ -11,11 +11,11 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JDAGuildTextChannel extends JDAGuildChannel implements ServerTextChannel {
+public class JDAServerTextChannel extends JDAGuildChannel implements ServerTextChannel {
 
     private final TextChannel textChannel;
 
-    public JDAGuildTextChannel(GuildChannel textChannel) {
+    public JDAServerTextChannel(GuildChannel textChannel) {
         super(textChannel);
         this.textChannel = textChannel.getGuild().getTextChannelById(textChannel.getId());
     }

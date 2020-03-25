@@ -1,7 +1,7 @@
 package fr.lukam.bot.jda.model.entities.server;
 
-import fr.lukam.bot.jda.model.entities.channels.JDAGuildTextChannel;
-import fr.lukam.bot.jda.model.entities.channels.JDAGuildVoiceChannel;
+import fr.lukam.bot.jda.model.entities.channels.JDAServerTextChannel;
+import fr.lukam.bot.jda.model.entities.channels.JDAServerVoiceChannel;
 import fr.lukam.bot.jda.model.entities.reaction.JDAEmote;
 import fr.lukam.bot.api.entities.fakes.channels.FakeServerTextChannel;
 import fr.lukam.bot.api.entities.fakes.channels.FakeServerVoiceChannel;
@@ -49,7 +49,7 @@ public class JDAServer implements Server {
 
     @Override
     public ServerTextChannel getDefaultChannel() {
-        return new JDAGuildTextChannel(this.jdaServer.getDefaultChannel());
+        return new JDAServerTextChannel(this.jdaServer.getDefaultChannel());
     }
 
     @Override
@@ -107,28 +107,28 @@ public class JDAServer implements Server {
     @Override
     public List<ServerTextChannel> getTextChannels() {
         return this.jdaServer.getTextChannels().stream()
-                .map(JDAGuildTextChannel::new)
+                .map(JDAServerTextChannel::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<ServerVoiceChannel> getVoiceChannels() {
         return this.jdaServer.getVoiceChannels().stream()
-                .map(JDAGuildVoiceChannel::new)
+                .map(JDAServerVoiceChannel::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     public ServerTextChannel getTextChannel(String channelId) {
         return Optional.ofNullable(this.jdaServer.getTextChannelById(channelId))
-                .map(guildChannel -> (ServerTextChannel) new JDAGuildTextChannel(guildChannel))
+                .map(guildChannel -> (ServerTextChannel) new JDAServerTextChannel(guildChannel))
                 .orElseGet(FakeServerTextChannel::new);
     }
 
     @Override
     public ServerVoiceChannel getVoiceChannel(String channelId) {
         return Optional.ofNullable(this.jdaServer.getVoiceChannelById(channelId))
-                .map(guildChannel -> (ServerVoiceChannel) new JDAGuildVoiceChannel(guildChannel))
+                .map(guildChannel -> (ServerVoiceChannel) new JDAServerVoiceChannel(guildChannel))
                 .orElseGet(FakeServerVoiceChannel::new); // TODO : review
     }
 

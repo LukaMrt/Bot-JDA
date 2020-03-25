@@ -2,7 +2,7 @@ package fr.lukam.bot.jda.model.entities.message;
 
 import fr.lukam.bot.jda.adapters.EmbedAdapter;
 import fr.lukam.bot.jda.adapters.MessageAdapter;
-import fr.lukam.bot.jda.model.entities.channels.JDAGuildTextChannel;
+import fr.lukam.bot.jda.model.entities.channels.JDAServerTextChannel;
 import fr.lukam.bot.jda.model.entities.reaction.JDAEmote;
 import fr.lukam.bot.jda.model.entities.reaction.JDAReaction;
 import fr.lukam.bot.jda.model.entities.server.JDARole;
@@ -71,7 +71,7 @@ public class JDAMessage implements Message {
     @Override
     public List<ServerTextChannel> getMentionedChannels() {
         return this.message.getMentionedChannels().stream()
-                .map(JDAGuildTextChannel::new)
+                .map(JDAServerTextChannel::new)
                 .collect(Collectors.toList());
     }
 
