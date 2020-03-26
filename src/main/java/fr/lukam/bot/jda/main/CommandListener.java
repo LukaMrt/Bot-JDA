@@ -1,13 +1,17 @@
 package fr.lukam.bot.jda.main;
 
 import fr.lukam.bot.api.entities.fakes.server.FakeServer;
+import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.commands.Command;
 import fr.lukam.bot.api.entities.interfaces.events.Listener;
+import fr.lukam.bot.api.entities.interfaces.message.Message;
 import fr.lukam.bot.api.entities.interfaces.server.Server;
-import fr.lukam.bot.api.events.message.actions.MessageReceivedEvent;
+import fr.lukam.bot.api.events.message.actions.PrivateMessageReceivedEvent;
 import fr.lukam.bot.api.events.message.actions.server.ServerMessageReceivedEvent;
 import fr.lukam.bot.api.repositories.CommandsRepository;
 import fr.lukam.bot.api.repositories.InfosRepository;
+
+import java.util.Arrays;
 
 public class CommandListener extends Listener implements fr.lukam.deltibot.core.domain.plugins.model.Listener {
 
@@ -20,18 +24,18 @@ public class CommandListener extends Listener implements fr.lukam.deltibot.core.
     }
 
     @Override
-    public void onPrivateMessageReceived(MessageReceivedEvent event) {
-        execute(event, new FakeServer());
+    public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
+        execute(event.getMessage(), event.getTextChannel(), new FakeServer());
     }
 
     @Override
     public void onServerMessageReceived(ServerMessageReceivedEvent event) {
-        execute(event, event.getServer());
+        execute(event.getMessage(), event.getTextChannel(), event.getServer());
     }
 
-    private void execute(MessageReceivedEvent event, Server server) {
+    private void execute(Message message, TextChannel channel, Server server) {
 
-        String content = event.getMessage().getContent();
+        String content = message.getContent();
 
         if (content.isEmpty()) {
             return;
@@ -49,17 +53,20 @@ public class CommandListener extends Listener implements fr.lukam.deltibot.core.
 
         Command command = this.commandsRepository.getCommandByName(args[0]);
 
+        int a = 1;
+
         for (int i = 1; i < args.length; i++) {
 
             Command subCommand = command.getSubCommand(args[i]);
 
             if (subCommand != command) {
                 command = subCommand;
+                ++a;
             }
 
         }
 
-        command.execute(new JDACommandEvent(infosRepository, event.getMessage(), event.getTextChannel(), server));
+        command.execute(new JDACommandEvent(infosRepository, message, channel, server, Arrays.copyOfRange(args, a, args.length)));
     }
 
 }

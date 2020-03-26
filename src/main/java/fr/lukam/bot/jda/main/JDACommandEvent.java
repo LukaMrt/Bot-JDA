@@ -6,6 +6,7 @@ import fr.lukam.bot.api.entities.interfaces.message.Message;
 import fr.lukam.bot.api.entities.interfaces.server.Server;
 import fr.lukam.bot.api.entities.interfaces.user.User;
 import fr.lukam.bot.api.repositories.InfosRepository;
+import fr.lukam.bot.jda.adapters.MessageAdapter;
 
 public class JDACommandEvent implements CommandEvent {
 
@@ -13,12 +14,14 @@ public class JDACommandEvent implements CommandEvent {
     private final Message message;
     private final TextChannel textChannel;
     private final Server server;
+    private final String[] arguments;
 
-    public JDACommandEvent(InfosRepository infosRepository, Message message, TextChannel textChannel, Server server) {
+    public JDACommandEvent(InfosRepository infosRepository, Message message, TextChannel textChannel, Server server, String[] arguments) {
         this.infosRepository = infosRepository;
         this.message = message;
         this.textChannel = textChannel;
         this.server = server;
+        this.arguments = arguments;
     }
 
     @Override
@@ -28,12 +31,17 @@ public class JDACommandEvent implements CommandEvent {
 
     @Override
     public String[] getArgs() {
-        return this.message.getContent().split(" ");
+        return this.arguments;
     }
 
     @Override
     public User getUser() {
         return message.getAuthor();
+    }
+
+    @Override
+    public Message getMessage() {
+        return this.message;
     }
 
     @Override

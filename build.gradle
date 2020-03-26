@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.LukaMrt:Bot-API:V0.8.1'
+    implementation 'com.github.LukaMrt:Bot-API:V0.8.7'
     implementation 'com.github.LukaMrt:DeltiBot-Core:V0.1.5'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'net.dv8tion:JDA:4.1.0_100'

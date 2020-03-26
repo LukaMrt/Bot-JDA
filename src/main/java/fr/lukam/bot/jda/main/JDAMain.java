@@ -3,6 +3,9 @@ package fr.lukam.bot.jda.main;
 import fr.lukam.bot.api.repositories.CommandsRepository;
 import fr.lukam.bot.api.repositories.InfosRepository;
 import fr.lukam.bot.api.repositories.ListenersRepository;
+import fr.lukam.bot.jda.adapters.JDAChannelTypeAdapter;
+import fr.lukam.bot.jda.adapters.JDAPermissionsAdapter;
+import fr.lukam.bot.jda.adapters.JDAStatusAdapter;
 import fr.lukam.bot.jda.main.configuration.Configuration;
 import fr.lukam.bot.jda.main.configuration.ConfigurationLoaderUtils;
 import fr.lukam.bot.jda.model.bot.JDABot;
@@ -73,6 +76,9 @@ public class JDAMain {
         API.setCommandsRepository((CommandsRepository) PROVIDER.getCommandsRepository());
         API.setListenersRepository((ListenersRepository) PROVIDER.getListenersRepository());
         API.setInfosRepository((InfosRepository) PROVIDER.getInfosRepository());
+        API.setPermissionAdapter(new JDAPermissionsAdapter());
+        API.setStatusAdapter(new JDAStatusAdapter());
+        API.setChannelTypeAdapter(new JDAChannelTypeAdapter());
     }
 
     private static void startBotLoop(String[] args) {
@@ -84,10 +90,11 @@ public class JDAMain {
             LOGGER.info("Write \"stop\" to stop DeltiBot or \"reload\" to reload DeltiBot");
         } while (!isValidEntry(nextLine));
 
+        main.stop();
+        jda.shutdown();
+        LOGGER.info("DeltiBot is stopped");
+
         if (nextLine.equalsIgnoreCase("stop")) {
-            main.stop();
-            jda.shutdown();
-            LOGGER.info("DeltiBot is stopped");
             System.exit(0);
             return;
         }
