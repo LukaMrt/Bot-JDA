@@ -14,7 +14,7 @@ jar {
 }
 
 shadowJar {
-    shadowJar.setArchiveName("DeltiBot-JDA.jar")
+    shadowJar.setArchiveName("DeltiBot-JDA-V0.1.0.jar")
 }
 
 compileJava.options.encoding = 'UTF-8'
