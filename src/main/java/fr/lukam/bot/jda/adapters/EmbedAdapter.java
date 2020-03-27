@@ -24,7 +24,7 @@ public class EmbedAdapter {
                 .setTitle(embed.getTitle())
                 .setFooter(embed.getFooter());
 
-        if (embed.getImageURL().isEmpty()) {
+        if (!embed.getImageURL().isEmpty()) {
             embedBuilder.setImage(embed.getImageURL());
         }
 
@@ -38,7 +38,11 @@ public class EmbedAdapter {
         MessageEmbed embed = message.getEmbeds().get(0);
 
         EmbedBuilder embedBuilder = API.createEmbed();
-        embedBuilder.setAuthor(new JDAUser(message.getAuthor()));
+
+        if (embed.getAuthor() != null) {
+            embedBuilder.setAuthor(API.getUserByName(embed.getAuthor().getName()));
+        }
+
         embedBuilder.setColor(embed.getColor());
         embedBuilder.setDescription(embed.getDescription());
         embedBuilder.setTitle(embed.getTitle());

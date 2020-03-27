@@ -24,9 +24,9 @@ public class MessageAdapter {
 
         if (!newMessage.getContent().isEmpty()) {
             messageBuilder.setContent(newMessage.getContent());
-        } else {
-            messageBuilder.setContent("erreur");
-        }
+        } /* else {
+            messageBuilder.setContent("erreur");  // TODO: to test
+        } */
 
         if (newMessage.getEmbed() != null) {
             messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(newMessage.getEmbed()));

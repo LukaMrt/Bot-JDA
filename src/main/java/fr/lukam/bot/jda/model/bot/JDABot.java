@@ -1,5 +1,6 @@
 package fr.lukam.bot.jda.model.bot;
 
+import fr.lukam.bot.api.entities.fakes.user.FakeUser;
 import fr.lukam.bot.jda.model.entities.server.JDAServer;
 import fr.lukam.bot.jda.model.entities.user.JDAUser;
 import fr.lukam.bot.api.bot.Bot;
@@ -33,6 +34,16 @@ public class JDABot implements Bot {
     @Override
     public User getUser(String userId) {
         return new JDAUser(this.jda.getUserById(userId));
+    }
+
+    @Override
+    public User getUserByName(String userName) {
+        return jda.getUsersByName(userName, true)
+                .stream()
+                .findFirst()
+                .map(JDAUser::new)
+                .map( jdaUser -> (User) jdaUser)
+                .orElseGet(FakeUser::new);
     }
 
     @Override
