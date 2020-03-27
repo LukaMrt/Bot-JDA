@@ -53,4 +53,9 @@ public class TestProvider implements ObjectsProvider {
         return LISTENER_ADAPTER;
     }
 
+    @Override
+    public PluginsRepository getPluginsRepository() {
+        return PLUGINS_REPOSITORY;
+    }
+
 }

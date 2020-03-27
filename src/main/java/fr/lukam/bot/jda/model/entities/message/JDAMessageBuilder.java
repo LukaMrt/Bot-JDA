@@ -8,7 +8,7 @@ import fr.lukam.bot.api.entities.interfaces.message.MessageBuilder;
 
 public class JDAMessageBuilder implements MessageBuilder {
 
-    private String text = ".";
+    private String text = "";
     private Embed embed = new FakeEmbed();
 
     @Override
@@ -35,9 +35,9 @@ public class JDAMessageBuilder implements MessageBuilder {
 
         if (!text.isEmpty()) {
             messageBuilder.setContent(text);
-        } else {
+        } /* else { // TODO : to test
             messageBuilder.setContent("erreur");
-        }
+        } */
 
         if (embed != null) {
             messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(embed));

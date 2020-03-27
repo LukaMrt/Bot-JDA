@@ -39,13 +39,21 @@ public class EmbedAdapter {
 
         EmbedBuilder embedBuilder = API.createEmbed();
 
-        if (embed.getAuthor() != null) {
+        if (embed.getAuthor() != null && embed.getAuthor().getName() != null && !embed.getAuthor().getName().isEmpty()) {
             embedBuilder.setAuthor(API.getUserByName(embed.getAuthor().getName()));
         }
 
-        embedBuilder.setColor(embed.getColor());
-        embedBuilder.setDescription(embed.getDescription());
-        embedBuilder.setTitle(embed.getTitle());
+        if (embed.getColor() != null) {
+            embedBuilder.setColor(embed.getColor());
+        }
+
+        if (embed.getTitle() != null && !embed.getTitle().isEmpty()) {
+            embedBuilder.setTitle(embed.getTitle());
+        }
+
+        if (embed.getDescription() != null && !embed.getDescription().isEmpty()) {
+            embedBuilder.setDescription(embed.getDescription());
+        }
 
         if (embed.getFooter() != null) {
             embedBuilder.setFooter(embed.getFooter().getText());

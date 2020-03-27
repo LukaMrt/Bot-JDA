@@ -3,6 +3,7 @@ package fr.lukam.bot.jda.main;
 import fr.lukam.bot.api.repositories.CommandsRepository;
 import fr.lukam.bot.api.repositories.InfosRepository;
 import fr.lukam.bot.api.repositories.ListenersRepository;
+import fr.lukam.bot.api.repositories.PluginsRepository;
 import fr.lukam.bot.jda.adapters.JDAChannelTypeAdapter;
 import fr.lukam.bot.jda.adapters.JDAPermissionsAdapter;
 import fr.lukam.bot.jda.adapters.JDAStatusAdapter;
@@ -76,6 +77,7 @@ public class JDAMain {
         API.setCommandsRepository((CommandsRepository) PROVIDER.getCommandsRepository());
         API.setListenersRepository((ListenersRepository) PROVIDER.getListenersRepository());
         API.setInfosRepository((InfosRepository) PROVIDER.getInfosRepository());
+        API.setPluginsRepository((PluginsRepository) PROVIDER.getPluginsRepository());
         API.setPermissionAdapter(new JDAPermissionsAdapter());
         API.setStatusAdapter(new JDAStatusAdapter());
         API.setChannelTypeAdapter(new JDAChannelTypeAdapter());

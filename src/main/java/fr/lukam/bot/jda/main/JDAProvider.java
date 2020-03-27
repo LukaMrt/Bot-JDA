@@ -53,4 +53,9 @@ public class JDAProvider implements ObjectsProvider {
         return LISTENER_ADAPTER;
     }
 
+    @Override
+    public PluginsRepository getPluginsRepository() {
+        return this.PLUGINS_REPOSITORY;
+    }
+
 }
