@@ -1,0 +1,8 @@
+[bot]
+token = "ngfdg5sDGJSKQQf5SFLQAP855D"
+prefix = '!'
+
+[ids]
+owner_id = "142489150250489549"
+co_owners_ids = ["2485141250120697205", "148603010589120365"]
+main_server_id = "148957585623541789"
