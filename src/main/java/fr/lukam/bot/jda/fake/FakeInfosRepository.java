@@ -21,7 +21,7 @@ public class FakeInfosRepository implements InfosRepository, fr.lukam.bot.api.re
 
     @Override
     public String getString(String key) {
-        return "";
+        return "*";
     }
 
     @Override

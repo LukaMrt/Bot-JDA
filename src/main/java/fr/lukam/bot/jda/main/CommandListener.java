@@ -1,5 +1,6 @@
 package fr.lukam.bot.jda.main;
 
+import fr.lukam.bot.api.bot.API;
 import fr.lukam.bot.api.entities.fakes.server.FakeServer;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.commands.Command;
@@ -66,7 +67,15 @@ public class CommandListener extends Listener implements fr.lukam.deltibot.core.
 
         }
 
-        command.execute(new JDACommandEvent(infosRepository, message, channel, server, Arrays.copyOfRange(args, a, args.length)));
+        JDACommandEvent event = new JDACommandEvent(infosRepository, message, channel, server, Arrays.copyOfRange(args, a, args.length));
+
+        if (command.canExecute(event)) {
+            command.execute(event);
+            return;
+        }
+
+        Message errorMessage = API.createMessage().setText("Vous ne pouvez pas exécuter cette commande.").build();
+        channel.sendMessage(errorMessage);
     }
 
 }

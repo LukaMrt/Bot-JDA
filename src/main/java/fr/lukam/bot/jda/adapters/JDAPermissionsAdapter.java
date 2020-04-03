@@ -15,96 +15,96 @@ public class JDAPermissionsAdapter implements PermissionAdapter {
     @Override
     public Permission fromPermissionName(String permissionName) {
 
-        switch (permissionName) {
+        switch (permissionName.toLowerCase()) {
 
-            case "Create instant invite":
+            case "create instant invite":
                 return new CreateInvite();
 
-            case "Kick member":
+            case "kick member":
                 return new KickMember();
 
-            case "Ban member":
+            case "ban member":
                 return new BanMember();
 
-            case "Administrator":
+            case "administrator":
                 return new Administrator();
 
-            case "Manage channels":
+            case "manage channels":
                 return new ManageChannel();
 
-            case "Manage server":
+            case "manage server":
                 return new ManageServer();
 
-            case "Message add reaction":
+            case "message add reaction":
                 return new MessageAddReaction();
 
-            case "View logs":
+            case "view logs":
                 return new ViewLogs();
 
-            case "View channels":
+            case "view channels":
                 return new ViewChannels();
 
-            case "Read messages":
+            case "read messages":
                 return new ReadMessages();
 
-            case "Write messages":
+            case "write messages":
                 return new WriteMessages();
 
-            case "Manage messages":
+            case "manage messages":
                 return new ManageMessages();
 
-            case "Read history":
+            case "read history":
                 return new ReadHistory();
 
-            case "Mention everyone":
+            case "mention everyone":
                 return new MentionEveryone();
 
             case "use external emote":
                 return new ExternalEmote();
 
-            case "Stream":
+            case "stream":
                 return new Stream();
 
-            case "Voice connect":
+            case "voice connect":
                 return new VoiceConnect();
 
-            case "Voice speak":
+            case "voice speak":
                 return new VoiceSpeak();
 
-            case "Mute others":
+            case "mute others":
                 return new MuteOthers();
 
-            case "Disconnect others":
+            case "disconnect others":
                 return new DisconnectOthers();
 
-            case "Move others":
+            case "move others":
                 return new MoveOthers();
 
-            case "Change nickname":
+            case "change nickname":
                 return new ChangeNickname();
 
-            case "Manage nicknames":
+            case "manage nicknames":
                 return new ManageNickname();
 
-            case "Manage roles":
+            case "manage roles":
                 return new ManageRoles();
 
-            case "Manage permissions":
+            case "manage permissions":
                 return new ManagePermissions();
 
-            case "Unknown":
+            case "unknown":
 
-            case "Manage webhooks":
+            case "manage webhooks":
 
-            case "Use voice activity":
+            case "use voice activity":
 
-            case "Attach files":
+            case "attach files":
 
-            case "Embed links":
+            case "embed links":
 
-            case "Send TTS messages":
+            case "send TTS messages":
 
-            case "Priority speaker":
+            case "priority speaker":
 
             default:
                 return new Unknown();

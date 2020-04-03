@@ -1,6 +1,5 @@
 package fr.lukam.bot.jda.model.entities.server;
 
-import fr.lukam.bot.jda.adapters.EmbedAdapter;
 import fr.lukam.bot.jda.adapters.MessageAdapter;
 import fr.lukam.bot.jda.adapters.PermissionsAdapter;
 import fr.lukam.bot.jda.adapters.StatusAdapter;
@@ -12,7 +11,6 @@ import fr.lukam.bot.api.entities.interfaces.server.Permission;
 import fr.lukam.bot.api.entities.interfaces.server.Role;
 import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
 import fr.lukam.bot.api.entities.interfaces.user.Status;
-import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 
@@ -66,9 +64,8 @@ public class JDAServerMember implements ServerMember {
 
     @Override
     public boolean hasRoles(Role... roles) {
-        return this.member.getRoles().stream()
-                .allMatch(role -> Arrays.stream(roles)
-                        .anyMatch(role1 -> role.getName().equalsIgnoreCase(role1.getName())));
+        return Arrays.stream(roles)
+                .allMatch(role -> this.member.getRoles().stream().anyMatch(role1 -> role.getName().equalsIgnoreCase(role1.getName())));
     }
 
     @Override
