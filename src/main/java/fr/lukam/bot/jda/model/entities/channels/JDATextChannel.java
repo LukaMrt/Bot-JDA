@@ -1,12 +1,10 @@
 package fr.lukam.bot.jda.model.entities.channels;
 
-import fr.lukam.bot.jda.adapters.ChannelTypeAdapter;
-import fr.lukam.bot.jda.adapters.EmbedAdapter;
+import fr.lukam.bot.jda.adapters.ChannelTypeAdapterUtils;
 import fr.lukam.bot.jda.adapters.MessageAdapter;
 import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
-import net.dv8tion.jda.api.MessageBuilder;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -79,7 +77,7 @@ public class JDATextChannel implements TextChannel {
 
     @Override
     public ChannelType getChannelType() {
-        return ChannelTypeAdapter.fromJDAChannelType(this.jdaChannel.getType());
+        return ChannelTypeAdapterUtils.fromJDAChannelType(this.jdaChannel.getType());
     }
 
 }

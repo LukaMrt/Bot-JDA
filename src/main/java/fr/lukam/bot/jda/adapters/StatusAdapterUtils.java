@@ -4,7 +4,7 @@ import fr.lukam.bot.jda.model.entities.user.status.*;
 import fr.lukam.bot.api.entities.interfaces.user.Status;
 import net.dv8tion.jda.api.OnlineStatus;
 
-public class StatusAdapter {
+public class StatusAdapterUtils {
 
     public static Status fromJDAStatus(OnlineStatus onlineStatus) {
 
