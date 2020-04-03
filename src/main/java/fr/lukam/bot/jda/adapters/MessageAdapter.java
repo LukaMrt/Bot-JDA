@@ -12,7 +12,7 @@ public class MessageAdapter {
         message.setText(jdaMessage.getContentDisplay());
 
         if (jdaMessage.getEmbeds().size() != 0) {
-            message.setEmbed(EmbedAdapter.fromJDAEmbed(jdaMessage));
+            message.setEmbed(EmbedAdapterUtils.fromJDAEmbed(jdaMessage));
         }
 
         return message.build();
@@ -29,7 +29,7 @@ public class MessageAdapter {
         } */
 
         if (newMessage.getEmbed() != null) {
-            messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(newMessage.getEmbed()));
+            messageBuilder.setEmbed(EmbedAdapterUtils.fromAPIEmbed(newMessage.getEmbed()));
         }
 
         return messageBuilder.build();

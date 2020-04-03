@@ -7,7 +7,7 @@ import fr.lukam.bot.api.entities.interfaces.message.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
-public class EmbedAdapter {
+public class EmbedAdapterUtils {
 
     public static MessageEmbed fromAPIEmbed(Embed embed) {
 

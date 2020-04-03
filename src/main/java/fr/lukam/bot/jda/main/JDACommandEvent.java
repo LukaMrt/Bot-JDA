@@ -1,6 +1,5 @@
 package fr.lukam.bot.jda.main;
 
-import fr.lukam.bot.api.entities.fakes.server.FakeServerMember;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.events.CommandEvent;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
@@ -8,7 +7,6 @@ import fr.lukam.bot.api.entities.interfaces.server.Server;
 import fr.lukam.bot.api.entities.interfaces.server.ServerMember;
 import fr.lukam.bot.api.entities.interfaces.user.User;
 import fr.lukam.bot.api.repositories.InfosRepository;
-import fr.lukam.bot.jda.adapters.MessageAdapter;
 
 public class JDACommandEvent implements CommandEvent {
 

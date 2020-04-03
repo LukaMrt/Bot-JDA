@@ -60,7 +60,7 @@ public class CommandListener extends Listener implements fr.lukam.deltibot.core.
 
             Command subCommand = command.getSubCommand(args[i]);
 
-            if (subCommand != command) {
+            if (!subCommand.equals(command)) {
                 command = subCommand;
                 ++a;
             }

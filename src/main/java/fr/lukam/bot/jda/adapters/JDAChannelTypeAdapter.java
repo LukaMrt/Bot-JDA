@@ -2,7 +2,11 @@ package fr.lukam.bot.jda.adapters;
 
 import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
 import fr.lukam.bot.api.utils.ChannelTypeAdapter;
-import fr.lukam.bot.jda.model.entities.channels.types.*;
+import fr.lukam.bot.jda.model.entities.channels.types.Category;
+import fr.lukam.bot.jda.model.entities.channels.types.GuildTextChannel;
+import fr.lukam.bot.jda.model.entities.channels.types.GuildVoice;
+import fr.lukam.bot.jda.model.entities.channels.types.PrivateChannel;
+import fr.lukam.bot.jda.model.entities.channels.types.Unknown;
 
 public class JDAChannelTypeAdapter implements ChannelTypeAdapter {
 

@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class JDAEmbedBuilder implements EmbedBuilder {
 
-    net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder();
+    private net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder();
 
     @Override
     public EmbedBuilder anEmbed() {

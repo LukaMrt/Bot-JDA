@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.message;
 
-import fr.lukam.bot.jda.adapters.EmbedAdapter;
+import fr.lukam.bot.jda.adapters.EmbedAdapterUtils;
 import fr.lukam.bot.api.entities.fakes.message.FakeEmbed;
 import fr.lukam.bot.api.entities.interfaces.message.Embed;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
@@ -40,7 +40,7 @@ public class JDAMessageBuilder implements MessageBuilder {
         } */
 
         if (embed != null) {
-            messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(embed));
+            messageBuilder.setEmbed(EmbedAdapterUtils.fromAPIEmbed(embed));
         }
 
         return new JDAMessage(messageBuilder.build());
