@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.channels;
 
-import fr.lukam.bot.jda.adapters.ChannelTypeAdapter;
+import fr.lukam.bot.jda.adapters.ChannelTypeAdapterUtils;
 import fr.lukam.bot.jda.model.entities.server.JDAInvite;
 import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
 import fr.lukam.bot.api.entities.interfaces.channels.ServerChannel;
@@ -32,7 +32,7 @@ public class JDAGuildChannel implements ServerChannel {
 
     @Override
     public ChannelType getChannelType() {
-        return ChannelTypeAdapter.fromJDAChannelType(this.guildChannel.getType());
+        return ChannelTypeAdapterUtils.fromJDAChannelType(this.guildChannel.getType());
     }
 
     @Override

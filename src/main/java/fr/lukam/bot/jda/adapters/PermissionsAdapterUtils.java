@@ -1,13 +1,35 @@
 package fr.lukam.bot.jda.adapters;
 
-import fr.lukam.bot.jda.model.entities.server.permissions.*;
-import fr.lukam.bot.jda.model.entities.server.permissions.manage.*;
-import fr.lukam.bot.jda.model.entities.server.permissions.members.*;
-import fr.lukam.bot.jda.model.entities.server.permissions.text.*;
-import fr.lukam.bot.jda.model.entities.server.permissions.voice.*;
-import fr.lukam.bot.api.entities.interfaces.server.Permission;
 
-public class PermissionsAdapter {
+import fr.lukam.bot.api.entities.interfaces.server.Permission;
+import fr.lukam.bot.jda.model.entities.server.permissions.Administrator;
+import fr.lukam.bot.jda.model.entities.server.permissions.CreateInvite;
+import fr.lukam.bot.jda.model.entities.server.permissions.MessageAddReaction;
+import fr.lukam.bot.jda.model.entities.server.permissions.ViewLogs;
+import fr.lukam.bot.jda.model.entities.server.permissions.ViewChannels;
+import fr.lukam.bot.jda.model.entities.server.permissions.Unknown;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManageChannel;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManageNickname;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManageRoles;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManageServer;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManageEmotes;
+import fr.lukam.bot.jda.model.entities.server.permissions.manage.ManagePermissions;
+import fr.lukam.bot.jda.model.entities.server.permissions.members.BanMember;
+import fr.lukam.bot.jda.model.entities.server.permissions.members.ChangeNickname;
+import fr.lukam.bot.jda.model.entities.server.permissions.members.KickMember;
+import fr.lukam.bot.jda.model.entities.server.permissions.text.ManageMessages;
+import fr.lukam.bot.jda.model.entities.server.permissions.text.MentionEveryone;
+import fr.lukam.bot.jda.model.entities.server.permissions.text.ReadMessages;
+import fr.lukam.bot.jda.model.entities.server.permissions.text.WriteMessages;
+import fr.lukam.bot.jda.model.entities.server.permissions.text.ExternalEmote;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.MuteOthers;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.Stream;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.VoiceConnect;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.VoiceSpeak;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.MoveOthers;
+import fr.lukam.bot.jda.model.entities.server.permissions.voice.DisconnectOthers;
+
+public class PermissionsAdapterUtils {
 
     public static Permission fromJDAPermission(net.dv8tion.jda.api.Permission permission) {
 

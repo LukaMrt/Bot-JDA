@@ -129,7 +129,7 @@ public class JDAServer implements Server {
     public ServerVoiceChannel getVoiceChannel(String channelId) {
         return Optional.ofNullable(this.jdaServer.getVoiceChannelById(channelId))
                 .map(guildChannel -> (ServerVoiceChannel) new JDAServerVoiceChannel(guildChannel))
-                .orElseGet(FakeServerVoiceChannel::new); // TODO : review
+                .orElseGet(FakeServerVoiceChannel::new);
     }
 
     @Override
@@ -157,7 +157,7 @@ public class JDAServer implements Server {
     }
 
     @Override
-    public void addVoiceChannel(ServerVoiceChannel textChannel) { // TODO : review
+    public void addVoiceChannel(ServerVoiceChannel textChannel) { // TODO : review because maybe name cannot be empty
         this.jdaServer.createVoiceChannel("").queue();
     }
 

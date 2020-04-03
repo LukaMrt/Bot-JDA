@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.entities.Activity;
 
 import javax.security.auth.login.LoginException;
 
-public class JDABuilder {
+public class JDABuilderUtils {
 
     public static JDA buildJDA(String token, char prefix) {
 
@@ -28,7 +28,6 @@ public class JDABuilder {
         }
 
         return jda;
-
     }
 
 }

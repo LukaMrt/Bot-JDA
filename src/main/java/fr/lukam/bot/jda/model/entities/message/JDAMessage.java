@@ -1,7 +1,7 @@
 package fr.lukam.bot.jda.model.entities.message;
 
-import fr.lukam.bot.jda.adapters.EmbedAdapter;
-import fr.lukam.bot.jda.adapters.MessageAdapter;
+import fr.lukam.bot.jda.adapters.EmbedAdapterUtils;
+import fr.lukam.bot.jda.adapters.MessageAdapterUtils;
 import fr.lukam.bot.jda.model.entities.channels.JDAServerTextChannel;
 import fr.lukam.bot.jda.model.entities.reaction.JDAEmote;
 import fr.lukam.bot.jda.model.entities.reaction.JDAReaction;
@@ -41,7 +41,7 @@ public class JDAMessage implements Message {
         if (this.message.getEmbeds().size() == 0) {
             return new FakeEmbed();
         }
-        return EmbedAdapter.fromJDAEmbed(this.message);
+        return EmbedAdapterUtils.fromJDAEmbed(this.message);
     }
 
     @Override
@@ -125,7 +125,7 @@ public class JDAMessage implements Message {
 
     @Override
     public void edit(Message newMessage) {
-        this.message.editMessage(MessageAdapter.fromAPIMessage(newMessage)).queue();
+        this.message.editMessage(MessageAdapterUtils.fromAPIMessage(newMessage)).queue();
     }
 
     @Override

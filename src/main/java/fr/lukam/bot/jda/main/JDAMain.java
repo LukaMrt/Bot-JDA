@@ -57,7 +57,7 @@ public class JDAMain {
 
     private static boolean buildJDA() {
 
-        jda = JDABuilder.buildJDA(CONFIGURATION.token, CONFIGURATION.prefix);
+        jda = JDABuilderUtils.buildJDA(CONFIGURATION.token, CONFIGURATION.prefix);
 
         if (jda == null) {
 

@@ -1,14 +1,13 @@
 package fr.lukam.bot.jda.adapters;
 
 import fr.lukam.bot.jda.model.entities.message.JDAField;
-import fr.lukam.bot.jda.model.entities.user.JDAUser;
 import fr.lukam.bot.api.bot.API;
 import fr.lukam.bot.api.entities.interfaces.message.Embed;
 import fr.lukam.bot.api.entities.interfaces.message.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 
-public class EmbedAdapter {
+public class EmbedAdapterUtils {
 
     public static MessageEmbed fromAPIEmbed(Embed embed) {
 

@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.server;
 
-import fr.lukam.bot.jda.adapters.PermissionsAdapter;
+import fr.lukam.bot.jda.adapters.PermissionsAdapterUtils;
 import fr.lukam.bot.api.entities.interfaces.server.Permission;
 import fr.lukam.bot.api.entities.interfaces.server.Role;
 
@@ -45,7 +45,7 @@ public class JDARole implements Role {
     @Override
     public Set<Permission> getPermissions() {
         return this.role.getPermissions().stream()
-                .map(PermissionsAdapter::fromJDAPermission)
+                .map(PermissionsAdapterUtils::fromJDAPermission)
                 .collect(Collectors.toSet());
     }
 
@@ -53,19 +53,19 @@ public class JDARole implements Role {
     public boolean hasPermissions(Permission... permissions) {
         return this.role.hasPermission(Arrays.stream(permissions)
                 .map(Permission::getName)
-                .map(PermissionsAdapter::fromAPIPermission)
+                .map(PermissionsAdapterUtils::fromAPIPermission)
                 .collect(Collectors.toList()));
     }
 
     @Override
     public void addPermission(Permission permission) {
-        net.dv8tion.jda.api.Permission jdaPermission = PermissionsAdapter.fromAPIPermission(permission.getName());
+        net.dv8tion.jda.api.Permission jdaPermission = PermissionsAdapterUtils.fromAPIPermission(permission.getName());
         this.role.getManager().setPermissions(jdaPermission).queue();
     }
 
     @Override
     public void removePermission(Permission permission) {
-        net.dv8tion.jda.api.Permission jdaPermission = PermissionsAdapter.fromAPIPermission(permission.getName());
+        net.dv8tion.jda.api.Permission jdaPermission = PermissionsAdapterUtils.fromAPIPermission(permission.getName());
         this.role.getManager().revokePermissions(jdaPermission).queue();
     }
 

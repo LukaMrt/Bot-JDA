@@ -4,7 +4,7 @@ import fr.lukam.bot.api.bot.API;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
 import fr.lukam.bot.api.entities.interfaces.message.MessageBuilder;
 
-public class MessageAdapter {
+public class MessageAdapterUtils {
 
     public static Message fromJDAMessage(net.dv8tion.jda.api.entities.Message jdaMessage) {
 
@@ -12,7 +12,7 @@ public class MessageAdapter {
         message.setText(jdaMessage.getContentDisplay());
 
         if (jdaMessage.getEmbeds().size() != 0) {
-            message.setEmbed(EmbedAdapter.fromJDAEmbed(jdaMessage));
+            message.setEmbed(EmbedAdapterUtils.fromJDAEmbed(jdaMessage));
         }
 
         return message.build();
@@ -24,12 +24,10 @@ public class MessageAdapter {
 
         if (!newMessage.getContent().isEmpty()) {
             messageBuilder.setContent(newMessage.getContent());
-        } /* else {
-            messageBuilder.setContent("erreur");  // TODO: to test
-        } */
+        }
 
         if (newMessage.getEmbed() != null) {
-            messageBuilder.setEmbed(EmbedAdapter.fromAPIEmbed(newMessage.getEmbed()));
+            messageBuilder.setEmbed(EmbedAdapterUtils.fromAPIEmbed(newMessage.getEmbed()));
         }
 
         return messageBuilder.build();

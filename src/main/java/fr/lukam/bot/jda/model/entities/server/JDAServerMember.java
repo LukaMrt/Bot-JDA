@@ -1,8 +1,8 @@
 package fr.lukam.bot.jda.model.entities.server;
 
-import fr.lukam.bot.jda.adapters.MessageAdapter;
-import fr.lukam.bot.jda.adapters.PermissionsAdapter;
-import fr.lukam.bot.jda.adapters.StatusAdapter;
+import fr.lukam.bot.jda.adapters.MessageAdapterUtils;
+import fr.lukam.bot.jda.adapters.PermissionsAdapterUtils;
+import fr.lukam.bot.jda.adapters.StatusAdapterUtils;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
 import fr.lukam.bot.api.entities.interfaces.channels.ServerVoiceChannel;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
@@ -34,7 +34,7 @@ public class JDAServerMember implements ServerMember {
 
     @Override
     public void setNickName(String newNickName) {
-
+        this.member.modifyNickname(newNickName).queue();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class JDAServerMember implements ServerMember {
     public boolean hasPermissions(Permission... permissions) {
         return this.member.hasPermission(Arrays.stream(permissions)
                 .map(Permission::getName)
-                .map(PermissionsAdapter::fromAPIPermission)
+                .map(PermissionsAdapterUtils::fromAPIPermission)
                 .collect(Collectors.toList()));
     }
 
@@ -135,12 +135,12 @@ public class JDAServerMember implements ServerMember {
     @Override
     public void sendMessage(Message message) {
 
-        this.member.getUser().openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue());
+        this.member.getUser().openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapterUtils.fromAPIMessage(message)).queue());
     }
 
     @Override
     public Status getStatus() {
-        return StatusAdapter.fromJDAStatus(this.member.getOnlineStatus());
+        return StatusAdapterUtils.fromJDAStatus(this.member.getOnlineStatus());
     }
 
     @Override
