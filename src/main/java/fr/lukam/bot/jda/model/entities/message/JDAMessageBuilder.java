@@ -35,9 +35,7 @@ public class JDAMessageBuilder implements MessageBuilder {
 
         if (!text.isEmpty()) {
             messageBuilder.setContent(text);
-        } /* else { // TODO : to test
-            messageBuilder.setContent("erreur");
-        } */
+        }
 
         if (embed != null) {
             messageBuilder.setEmbed(EmbedAdapterUtils.fromAPIEmbed(embed));

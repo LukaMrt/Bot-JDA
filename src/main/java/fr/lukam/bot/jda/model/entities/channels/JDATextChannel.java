@@ -1,7 +1,7 @@
 package fr.lukam.bot.jda.model.entities.channels;
 
 import fr.lukam.bot.jda.adapters.ChannelTypeAdapterUtils;
-import fr.lukam.bot.jda.adapters.MessageAdapter;
+import fr.lukam.bot.jda.adapters.MessageAdapterUtils;
 import fr.lukam.bot.api.entities.interfaces.channels.ChannelType;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
@@ -19,20 +19,20 @@ public class JDATextChannel implements TextChannel {
 
     @Override
     public void sendMessage(Message message) {
-        this.jdaChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue();
+        this.jdaChannel.sendMessage(MessageAdapterUtils.fromAPIMessage(message)).queue();
     }
 
     @Override
     public Message getMessageById(String messageId) {
         net.dv8tion.jda.api.entities.Message jdaMessage = this.jdaChannel.retrieveMessageById(messageId).complete();
-        return MessageAdapter.fromJDAMessage(jdaMessage); // TODO : catch null
+        return MessageAdapterUtils.fromJDAMessage(jdaMessage); // TODO : catch null
     }
 
     @Override
     public List<Message> getHistoryBefore(Message message, boolean include, int count) {
         List<net.dv8tion.jda.api.entities.Message> jdaMessages = this.jdaChannel.getHistoryBefore(message.getId(), count).complete().getRetrievedHistory();
         List<Message> apiMessages = jdaMessages.stream()
-                .map(MessageAdapter::fromJDAMessage)
+                .map(MessageAdapterUtils::fromJDAMessage)
                 .collect(Collectors.toList());
 
         if (include) {
@@ -46,7 +46,7 @@ public class JDATextChannel implements TextChannel {
     public List<Message> getHistoryAfter(Message message, boolean include, int count) {
         List<net.dv8tion.jda.api.entities.Message> jdaMessages = this.jdaChannel.getHistoryAfter(message.getId(), count).complete().getRetrievedHistory();
         List<Message> apiMessages = jdaMessages.stream()
-                .map(MessageAdapter::fromJDAMessage)
+                .map(MessageAdapterUtils::fromJDAMessage)
                 .collect(Collectors.toList());
 
         if (include) {
@@ -61,7 +61,7 @@ public class JDATextChannel implements TextChannel {
         List<net.dv8tion.jda.api.entities.Message> jdaMessages = this.jdaChannel.retrievePinnedMessages().complete();
 
         return jdaMessages.stream()
-                .map(MessageAdapter::fromJDAMessage)
+                .map(MessageAdapterUtils::fromJDAMessage)
                 .collect(Collectors.toList());
     }
 

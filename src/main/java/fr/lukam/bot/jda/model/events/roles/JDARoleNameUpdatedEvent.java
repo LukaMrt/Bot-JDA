@@ -16,13 +16,13 @@ public class JDARoleNameUpdatedEvent implements RoleNameUpdatedEvent {
     }
 
     @Override
-    public String getOldName() { //TODO : review
-        return null;
+    public String getOldName() {
+        return event.getOldName();
     }
 
     @Override
-    public String getNewName() { //TODO : review
-        return null;
+    public String getNewName() {
+        return event.getNewName();
     }
 
     @Override

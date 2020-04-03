@@ -1,6 +1,6 @@
 package fr.lukam.bot.jda.model.entities.user;
 
-import fr.lukam.bot.jda.adapters.MessageAdapter;
+import fr.lukam.bot.jda.adapters.MessageAdapterUtils;
 import fr.lukam.bot.jda.model.entities.channels.JDATextChannel;
 import fr.lukam.bot.api.entities.interfaces.channels.TextChannel;
 import fr.lukam.bot.api.entities.interfaces.message.Message;
@@ -34,7 +34,7 @@ public class JDAUser implements User {
     @Override
     public void sendMessage(Message message) {
 
-        this.jdaUser.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapter.fromAPIMessage(message)).queue());
+        this.jdaUser.openPrivateChannel().queue(privateChannel -> privateChannel.sendMessage(MessageAdapterUtils.fromAPIMessage(message)).queue());
     }
 
     @Override
