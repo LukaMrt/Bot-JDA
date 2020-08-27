@@ -1,27 +1,28 @@
 package fr.lukam.bot.jda.main;
 
-import fr.lukam.deltibot.core.domain.infos.InfosRepository;
+import fr.lukam.bot.api.entities.interfaces.events.Listener;
+import fr.lukam.bot.api.repositories.CommandsRepository;
+import fr.lukam.bot.api.repositories.InfosRepository;
+import fr.lukam.bot.api.repositories.ListenersRepository;
+import fr.lukam.bot.api.repositories.PluginsRepository;
 import fr.lukam.deltibot.core.domain.infos.InfosSaver;
 import fr.lukam.deltibot.core.domain.infos.SaveInfos;
 import fr.lukam.deltibot.core.domain.plugins.*;
-import fr.lukam.deltibot.core.domain.plugins.model.Listener;
 import fr.lukam.deltibot.core.infrastructure.infos.RedisInfosRepository;
-import fr.lukam.deltibot.core.infrastructure.plugins.adapters.ListenerAdapter;
+import fr.lukam.deltibot.core.infrastructure.plugins.repositories.DefaultCommandsRepository;
+import fr.lukam.deltibot.core.infrastructure.plugins.repositories.DefaultListenersRepository;
 import fr.lukam.deltibot.core.infrastructure.plugins.repositories.JarsPluginsRepository;
-import fr.lukam.deltibot.core.infrastructure.plugins.repositories.SimpleCommandsRepository;
-import fr.lukam.deltibot.core.infrastructure.plugins.repositories.SimpleListenersRepository;
 import fr.lukam.deltibot.core.main.ObjectsProvider;
 
 public class JDAProvider implements ObjectsProvider {
 
-    public final CommandsRepository SIMPLE_COMMANDS_REPOSITORY = new SimpleCommandsRepository();
-    public final ListenersRepository SIMPLE_LISTENERS_REPOSITORY = new SimpleListenersRepository();
+    public final CommandsRepository SIMPLE_COMMANDS_REPOSITORY = new DefaultCommandsRepository();
+    public final ListenersRepository SIMPLE_LISTENERS_REPOSITORY = new DefaultListenersRepository();
     public final PluginsRepository PLUGINS_REPOSITORY = new JarsPluginsRepository();
     public final ManagePlugins PLUGINS_ACTIONS = new PluginsActions(PLUGINS_REPOSITORY);
     public final InfosRepository INFOS_REPOSITORY = new RedisInfosRepository();
-    public final SaveInfos INFOS_SAVER = new InfosSaver(INFOS_REPOSITORY);
-    public final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener((fr.lukam.bot.api.repositories.CommandsRepository) SIMPLE_COMMANDS_REPOSITORY, (fr.lukam.bot.api.repositories.InfosRepository) INFOS_REPOSITORY);
-    public final ListenerAdapter LISTENER_ADAPTER = new ListenerAdapter(LISTENER);
+    public final SaveInfos INFOS_SAVER = new InfosSaver((fr.lukam.deltibot.core.domain.infos.InfosRepository) INFOS_REPOSITORY);
+    public final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener(SIMPLE_COMMANDS_REPOSITORY, INFOS_REPOSITORY);
 
     @Override
     public InfosRepository getInfosRepository() {
@@ -50,7 +51,7 @@ public class JDAProvider implements ObjectsProvider {
 
     @Override
     public Listener getCommandsListener() {
-        return LISTENER_ADAPTER;
+        return LISTENER;
     }
 
     @Override
