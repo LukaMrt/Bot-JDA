@@ -21,4 +21,9 @@ public class JDAField implements Field {
         return this.field.getValue();
     }
 
+    @Override
+    public boolean isInline() {
+        return this.field.isInline();
+    }
+
 }
