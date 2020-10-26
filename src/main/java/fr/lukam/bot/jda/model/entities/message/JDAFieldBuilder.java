@@ -8,6 +8,7 @@ public class JDAFieldBuilder implements FieldBuilder {
 
     private String title;
     private String content;
+    private boolean inline;
 
     @Override
     public FieldBuilder aField() {
@@ -27,8 +28,14 @@ public class JDAFieldBuilder implements FieldBuilder {
     }
 
     @Override
+    public FieldBuilder setInline(boolean inline) {
+        this.inline = inline;
+        return this;
+    }
+
+    @Override
     public Field build() {
-        MessageEmbed.Field jdaField = new MessageEmbed.Field(this.title, this.content, false);
+        MessageEmbed.Field jdaField = new MessageEmbed.Field(this.title, this.content, inline);
         return new JDAField(jdaField);
     }
 

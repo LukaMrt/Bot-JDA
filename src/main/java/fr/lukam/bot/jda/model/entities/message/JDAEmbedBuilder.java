@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class JDAEmbedBuilder implements EmbedBuilder {
 
-    private net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder();
+    private final net.dv8tion.jda.api.EmbedBuilder embedBuilder = new net.dv8tion.jda.api.EmbedBuilder();
 
     @Override
     public EmbedBuilder anEmbed() {
@@ -20,6 +20,12 @@ public class JDAEmbedBuilder implements EmbedBuilder {
     @Override
     public EmbedBuilder setImageURL(String url) {
         embedBuilder.setImage(url);
+        return this;
+    }
+
+    @Override
+    public EmbedBuilder setThumbnailURL(String url) {
+        this.embedBuilder.setThumbnail(url);
         return this;
     }
 

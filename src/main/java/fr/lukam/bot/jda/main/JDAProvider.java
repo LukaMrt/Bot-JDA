@@ -9,6 +9,7 @@ import fr.lukam.bot.jda.infrastructure.repositories.DefaultInfosRepository;
 import fr.lukam.deltibot.core.domain.infos.InfosSaver;
 import fr.lukam.deltibot.core.domain.infos.SaveInfos;
 import fr.lukam.deltibot.core.domain.plugins.*;
+import fr.lukam.deltibot.core.infrastructure.infos.RedisInfosRepository;
 import fr.lukam.deltibot.core.infrastructure.plugins.repositories.DefaultCommandsRepository;
 import fr.lukam.deltibot.core.infrastructure.plugins.repositories.DefaultListenersRepository;
 import fr.lukam.deltibot.core.infrastructure.plugins.repositories.JarsPluginsRepository;
@@ -21,6 +22,7 @@ public class JDAProvider implements ObjectsProvider {
     public final PluginsRepository PLUGINS_REPOSITORY = new JarsPluginsRepository();
     public final ManagePlugins PLUGINS_ACTIONS = new PluginsActions(PLUGINS_REPOSITORY);
     public final InfosRepository INFOS_REPOSITORY = new DefaultInfosRepository();
+//    public final InfosRepository INFOS_REPOSITORY = new RedisInfosRepository();
     public final SaveInfos INFOS_SAVER = new InfosSaver((fr.lukam.deltibot.core.domain.infos.InfosRepository) INFOS_REPOSITORY);
     public final fr.lukam.bot.api.entities.interfaces.events.Listener LISTENER = new CommandListener(SIMPLE_COMMANDS_REPOSITORY, INFOS_REPOSITORY);
 

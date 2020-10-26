@@ -73,6 +73,13 @@ public class JDAEmbed implements Embed {
     }
 
     @Override
+    public String getThumbnailURL() {
+
+        MessageEmbed.Thumbnail thumbnail = this.embed.getThumbnail();
+        return thumbnail != null ? thumbnail.getUrl() : "";
+    }
+
+    @Override
     public boolean isFake() {
         return false;
     }
