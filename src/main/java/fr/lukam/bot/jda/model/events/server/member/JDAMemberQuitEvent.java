@@ -7,13 +7,13 @@ import fr.lukam.bot.api.events.server.member.MemberLeftEvent;
 import fr.lukam.bot.jda.model.entities.server.JDAServer;
 import fr.lukam.bot.jda.model.entities.server.JDAServerMember;
 import fr.lukam.bot.jda.model.entities.user.JDAUser;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 
 public class JDAMemberQuitEvent implements MemberLeftEvent {
 
-    private final GuildMemberLeaveEvent event;
+    private final GuildMemberRemoveEvent event;
 
-    public JDAMemberQuitEvent(GuildMemberLeaveEvent event) {
+    public JDAMemberQuitEvent(GuildMemberRemoveEvent event) {
         this.event = event;
     }
 

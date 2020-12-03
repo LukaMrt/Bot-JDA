@@ -1,9 +1,5 @@
 package fr.lukam.bot.jda.main;
 
-import fr.lukam.bot.api.repositories.CommandsRepository;
-import fr.lukam.bot.api.repositories.InfosRepository;
-import fr.lukam.bot.api.repositories.ListenersRepository;
-import fr.lukam.bot.api.repositories.PluginsRepository;
 import fr.lukam.bot.jda.adapters.JDAChannelTypeAdapter;
 import fr.lukam.bot.jda.adapters.JDAPermissionsAdapter;
 import fr.lukam.bot.jda.adapters.JDAStatusAdapter;
@@ -39,25 +35,23 @@ public class JDAMain {
         PROVIDER = new JDAProvider();
         main = new Main(PROVIDER);
 
-        if (!buildJDA()) {
+        setUpAPI();
+
+        if (!buildJDA(new DeltiBotJDAListener(API.getListenersRepository()))) {
             return;
         }
-
-        setUpAPI();
 
         main.start(new BotInfos(CONFIGURATION.prefix,
                 CONFIGURATION.ownerId,
                 CONFIGURATION.coOwnerIds,
                 CONFIGURATION.mainServerId));
 
-        jda.addEventListener(new DeltiBotJDAListener(API.getListenersRepository()));
-
         startBotLoop(args);
     }
 
-    private static boolean buildJDA() {
+    private static boolean buildJDA(DeltiBotJDAListener listener) {
 
-        jda = JDABuilderUtils.buildJDA(CONFIGURATION.token, CONFIGURATION.prefix);
+        jda = JDABuilderUtils.buildJDA(CONFIGURATION.token, CONFIGURATION.prefix, listener);
 
         if (jda == null) {
 
@@ -74,10 +68,10 @@ public class JDAMain {
         API.setEmbedBuilder(new JDAEmbedBuilder());
         API.setMessageBuilder(new JDAMessageBuilder());
         API.setFieldBuilder(new JDAFieldBuilder());
-        API.setCommandsRepository((CommandsRepository) PROVIDER.getCommandsRepository());
-        API.setListenersRepository((ListenersRepository) PROVIDER.getListenersRepository());
-        API.setInfosRepository((InfosRepository) PROVIDER.getInfosRepository());
-        API.setPluginsRepository((PluginsRepository) PROVIDER.getPluginsRepository());
+        API.setCommandsRepository(PROVIDER.getCommandsRepository());
+        API.setListenersRepository(PROVIDER.getListenersRepository());
+        API.setInfosRepository(PROVIDER.getInfosRepository());
+        API.setPluginsRepository(PROVIDER.getPluginsRepository());
         API.setPermissionAdapter(new JDAPermissionsAdapter());
         API.setStatusAdapter(new JDAStatusAdapter());
         API.setChannelTypeAdapter(new JDAChannelTypeAdapter());

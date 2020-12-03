@@ -71,7 +71,7 @@ import javax.annotation.Nonnull;
 
 public class DeltiBotJDAListener extends ListenerAdapter {
 
-    private ListenersRepository listenersRepository;
+    private final ListenersRepository listenersRepository;
 
     public DeltiBotJDAListener(ListenersRepository listenersRepository) {
         this.listenersRepository = listenersRepository;
@@ -209,7 +209,7 @@ public class DeltiBotJDAListener extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildMemberLeave(@Nonnull GuildMemberLeaveEvent event) {
+    public void onGuildMemberRemove(@Nonnull GuildMemberRemoveEvent event) {
         this.listenersRepository.getListeners().forEach(listener -> listener.onServerMemberLeave(new JDAMemberQuitEvent(event)));
     }
 

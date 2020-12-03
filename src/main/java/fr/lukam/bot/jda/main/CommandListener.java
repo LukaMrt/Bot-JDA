@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class CommandListener extends Listener implements fr.lukam.deltibot.core.domain.plugins.model.Listener {
 
     private final CommandsRepository commandsRepository;
-    private InfosRepository infosRepository;
+    private final InfosRepository infosRepository;
 
     public CommandListener(CommandsRepository commandsRepository, InfosRepository infosRepository) {
         this.commandsRepository = commandsRepository;

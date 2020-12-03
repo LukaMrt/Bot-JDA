@@ -8,14 +8,14 @@ import javax.security.auth.login.LoginException;
 
 public class JDABuilderUtils {
 
-    public static JDA buildJDA(String token, char prefix) {
+    public static JDA buildJDA(String token, char prefix, DeltiBotJDAListener listener) {
 
         JDA jda;
 
         try {
 
-            jda = new net.dv8tion.jda.api.JDABuilder()
-                    .setToken(token)
+            jda = net.dv8tion.jda.api.JDABuilder.createDefault(token)
+                    .addEventListeners(listener)
                     .setStatus(OnlineStatus.ONLINE)
                     .setActivity(Activity.of(Activity.ActivityType.DEFAULT, prefix + "help"))
                     .build();
